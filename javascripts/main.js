@@ -3,10 +3,10 @@ var myTenImagesArray = [
   image: "http://www.sequimproperty.com/wp-content/uploads/2014/04/exterior-artdeco.jpg",
 },
 {
-  image: "http://www.v-aline.com/thumbnail/f/frank-lloyd-wright-prairie-style-houses-18.jpeg",
+  image: "https://cdn.houseplans.com/product/su4kht77gnanrknqfdets47srg/w300x200.jpg",
 },
 {
-  image: "http://www.v-aline.com/thumbnail/f/frank-lloyd-wright-prairie-style-homes-1.jpeg",
+  image: "https://www.walldevil.com/wallpapers/w05/thumb/rivers-trees-fallingwater-architecture-frank-lloyd-wright.jpg",
 },
 {
   image: "http://doclibrary.com/MSC174/CMM/twilight-tours-sm.jpg",
@@ -15,7 +15,7 @@ var myTenImagesArray = [
   image: "https://s-media-cache-ak0.pinimg.com/originals/2b/3e/2a/2b3e2a76333dd64132b6408a50db3f7f.jpg",
 },
 {
-  image: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ_km6nIF82su5B6z0dbczE3QBkL1CtZm8ogN6HlQ4lD5bzooTR",
+  image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Exterior_-_Rear.jpg/300px-Exterior_-_Rear.jpg",
 },
 {
   image: "http://i281.photobucket.com/albums/kk218/slimssims/m_P_1304568107863_IMG_8062.jpg",
@@ -34,18 +34,20 @@ var myTenImagesArray = [
 var pictureOutput = $("#picture-container")
 
 function showMePictures(){
-	var pictureString;
-	console.log("inside function");
+	var pictureString="";
 	for(var i = 0; i < myTenImagesArray.length; i++) {
 		var currentImage = myTenImagesArray[i];
-		console.log("inside loop", [i]);
-		console.log(currentImage);
-		console.log(currentImage.image);
+		if (i % 3 === 0) {
+			pictureString += `<div class="row">`;
+		}
 		pictureString += `<div class="col-sm-6 col-md-3 thumbnail">`;
 		pictureString += `<img src="${currentImage.image}"/>`;
 		pictureString += `</div>`;
+		if (i % 3 === 0) {
+			pictureString += `</div>`;
+		}
 	}
-	pictureOutput.innerHTML = pictureString;
+	pictureOutput.append(pictureString);
 }
 
 showMePictures();
