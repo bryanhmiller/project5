@@ -35,18 +35,21 @@ var pictureOutput = $("#picture-container")
 
 function showMePictures(){
 	var pictureString="";
+	var currentImage;
+
+	pictureString += `<div class="row">`;
 	for(var i = 0; i < myTenImagesArray.length; i++) {
-		var currentImage = myTenImagesArray[i];
-		if (i % 3 === 0) {
-			pictureString += `<div class="row">`;
-		}
+		currentImage = myTenImagesArray[i];
+
 		pictureString += `<div class="col-sm-6 col-md-3 thumbnail">`;
 		pictureString += `<img src="${currentImage.image}"/>`;
+		pictureString += `<p>${[i]}</p>`;
 		pictureString += `</div>`;
-		if (i % 3 === 0) {
-			pictureString += `</div>`;
+		if ((i + 1) % 3 === 0) {
+			pictureString += `</div><div class="row">`;
 		}
 	}
+	pictureString += `</div>`;	
 	pictureOutput.append(pictureString);
 }
 
